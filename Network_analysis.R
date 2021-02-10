@@ -61,7 +61,7 @@ qgraph(Network$graph, layout = "circle", vsize = 20, labels = Traits, theme = "c
 #########################################################
 
 # Estimate a network with bootnet:
-Network_25Items <- estimateNetwork(...)
+Network_25Items <- estimateNetwork(bfi, default = "...")
 
 # Plotting a network with qgraph: 
 qgraph(..., layout = "...", theme = "colorblind")
@@ -99,15 +99,15 @@ plot_network_regularized <- qgraph(Network_regularized$graph, layout = "spring")
 
 Layout <- averageLayout(plot_network, plot_network_regularized)
 par(mfrow=c(1,2))
-qgraph(Network_25Items$graph, layout = Layout, title = "Partial Correlation")
-qgraph(Network_regularized$graph, layout = Layout, title = "Model selection")
+qgraph(Network_25Items$graph, layout = Layout, title = "Partial Correlation", theme = "colorblind", groups = Traits)
+qgraph(Network_regularized$graph, layout = Layout, title = "Model selection", theme = "colorblind", groups = Traits)
 
 #########################################################
 # Exercise 6: Assess Stability of your network 
 #########################################################
 
 # Assess stability:
-Accuracy <- bootnet(bfi, default = "...", nBoots = ...)
+Stability <- bootnet(bfi, default = "...", nBoots = ...)
 plot(..., order = "...")
 
 #########################################################
